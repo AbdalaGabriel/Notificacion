@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <style type="text/css">
+    body{text-align: center; 
+        background: rgb(12, 111, 208);
+        color: white;
+        font-family: "Arial";}
+    </style>
+
+    <title>GEO</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+
+
+        navigator.notification.alert(
+            'Estas viendo una notificación!',  // message
+            notificacionCerrada,         // callback
+            'Felicitaciones',            // title
+            'OK'                  // buttonName
+        );
+    }
+
+
+       
+    function notificacionCerrada() {
+    // do something
+    }
+   
+
+    </script>
+  </head>
+  <body>
+    <h1>Notificacion</h1>
+    <p>Ejemplo de notificaciones</p>
+  </body>
+</html>
