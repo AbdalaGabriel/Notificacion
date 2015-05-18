@@ -2,27 +2,86 @@
 <html>
   <head>
 
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
     <style type="text/css">
     body{text-align: center; 
         background: rgb(12, 111, 208);
         color: white;
         font-family: "Arial";}
+
+
+    .boton{background: rgb(12, 208, 171);
+    border-radius: 50px;
+    line-height: 50px;
+    width: 200px;
+    border: none;
+    float: none;
+    display: block;
+    margin: 20px auto;
+    color: white;
+    cursor: pointer;}
+
+    p{margin: 0 0 60px 0;}
+
     </style>
 
-    <title>GEO</title>
+    <title>NOTIFICACION</title>
+
+
+
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
     //
+
     document.addEventListener("deviceready", onDeviceReady, false);
 
     // device APIs are available
     //
     function onDeviceReady() {
 
-         function onConfirm(buttonIndex) {
+        
+        var btn1 = $("#btn1");
+        var btn2 = $("#btn2");
+        var btn3 = $("#btn3");
+        var btn4 = $("#btn4");
+
+
+        // BOTONES
+
+
+        
+        //--------------------------------- BOTON 1 ------------------------------------//
+
+
+        btn1.click(function() {
+        
+            alert("hola");
+         navigator.notification.alert(
+            'Estas viendo una notificación!',  // message
+            notificacionCerrada,         // callback
+            'Felicitaciones',            // title
+            'OK'                  // buttonName
+        );
+        
+
+        });
+
+
+        function notificacionCerrada(buttonIndex) {
+            alert("caraste la notification");
+        }
+
+        //----------------------------------- BOTON 2 ----------------------------------//
+
+
+
+         btn2.click(function() {
+        
+          function onConfirm(buttonIndex) {
             alert('You selected button ' + buttonIndex);
         }
 
@@ -32,16 +91,63 @@
             'Game Over',           // title
             ['Restart','Exit']     // buttonLabels
         );
-    }
 
+        });
+
+
+  
+
+
+        //-------------------------------------- BOTON 3 -------------------------------//
+
+        btn3.click(function() {
+        
+        navigator.notification.prompt(
+            'Please enter your name',  // message
+            onPrompt,                  // callback to invoke
+            'Registration',            // title
+            ['Ok','Exit'],             // buttonLabels
+            'Jane Doe'                 // defaultText
+        );
+        
+
+        function onPrompt(results) {
+            alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+        }        
+
+        });
+
+
+        //------------------------------------- BOTON 4 --------------------------------//
+
+        btn4.click(function() {
+        
+        navigator.notification.beep(5);
+        
+
+        });
+
+     
+   
 
        
+    };
+
+
+   
    
 
     </script>
   </head>
-  <body>
+  <body onload="onDeviceReady()">
     <h1>Notificacion</h1>
     <p>Ejemplo de notificaciones</p>
+
+    <button class="boton" id="btn1">Click me im an Alert</button>
+    <button class="boton" id="btn2">Click me, im an confirm</button>
+    <button class="boton" id="btn3">Click mem, im an prompt</button>
+    <button class="boton" id="btn4">Click me, im a beep</button>
+
+
   </body>
 </html>
