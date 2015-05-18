@@ -22,19 +22,20 @@
     //
     function onDeviceReady() {
 
-          navigator.notification.confirm(
+         function onConfirm(buttonIndex) {
+            alert('You selected button ' + buttonIndex);
+        }
+
+        navigator.notification.confirm(
             'You are the winner!', // message
              onConfirm,            // callback to invoke with index of button pressed
             'Game Over',           // title
-            ['Restart','Exit'] 
+            ['Restart','Exit']     // buttonLabels
         );
     }
 
 
        
-    function notificacionCerrada() {
-    // do something
-    }
    
 
     </script>
